@@ -3,22 +3,15 @@
 # How to test
 
 1. Start RabbitMQ with default username & password **guest:guest**
-2. Start one terminal, go to ./producer and run `go run .`
-3. Start one ore more terminals, go to ./worker and run `go run .`
+2. Start one ore more terminals, go to ./worker and run `go run .`
+   - Running the consumers (worker) first will ensure the creation of the queue
+3. Start one terminal, go to ./producer and run `go run .`
 
 You will see that the workers will share the messages, like a queue.
 
 # Example output
 
-## Terminal producer
-
-```bash
-go run .                                                                                  
-2023/01/20 14:32:48 gorabbit INFO: closing publisher...
-2023/01/20 14:32:48 gorabbit INFO: closing connection manager...
-```
-
-## Terminal worker 1
+## Terminal consumer 1
 
 ```bash
 go run .                  
@@ -44,7 +37,7 @@ go run .
 2023/01/20 14:37:14 consumed: hello, world 36
 ```
 
-## Terminal worker 2
+## Terminal consumer 2
 
 ```bash                                                    
 go run .                                                                                                                                                                    1 ↵ ──(Fri,Jan20)─┘
@@ -68,4 +61,12 @@ go run .                                                                        
 2023/01/20 14:37:13 consumed: hello, world 33
 2023/01/20 14:37:13 consumed: hello, world 35
 2023/01/20 14:37:14 consumed: hello, world 37
+```
+
+## Terminal producer
+
+```bash
+go run .                                                                                  
+2023/01/20 14:32:48 gorabbit INFO: closing publisher...
+2023/01/20 14:32:48 gorabbit INFO: closing connection manager...
 ```

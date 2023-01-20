@@ -29,7 +29,7 @@ func amqpFn() {
 			time.Sleep(time.Millisecond * 200)
 			return rabbitmq.Ack
 		},
-		"txt_queue",
+		events.Queue,
 		rabbitmq.WithConsumerOptionsRoutingKey(events.RoutingKey),
 		rabbitmq.WithConsumerOptionsQOSPrefetch(1),
 		rabbitmq.WithConsumerOptionsExchangeDurable,
